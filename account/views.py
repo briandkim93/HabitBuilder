@@ -42,7 +42,7 @@ def signup(request):
                 return render(request, 'account/signup.html', context)
             user = User.objects.create_user(username, password=password, email=email)
             auth.login(request, user)
-            return
+            return redirect('manage')
         else:
             context['error'] = 'Please do not leave any empty fields'
             return render(request, 'account/signup.html', context)
@@ -66,7 +66,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user != None:
                 auth.login(request, user)
-                return
+                return redirect('manage')
             else:
                 context['error'] = 'Username or password is incorrect'
                 return render(request, 'account/login.html', context)     
@@ -76,7 +76,7 @@ def login(request):
     else:
         return render(request, 'account/login.html')
 
-
-
-
-
+def logout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        return redirect('/')

@@ -7,7 +7,15 @@
   <body>
     <nav>
       <span>HabitBuilder</span>
+      {% if user.is_authenticated %}
+      <a href="{% url 'manage' %}">Manage</a>
+      <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <input type="submit" value="Logout">
+      </form>
+      {% else %}
       <a href="{% url 'login' %}">Login</a>
+      {% endif %}
     </nav>
     {% block content %}
     {% endblock %}
