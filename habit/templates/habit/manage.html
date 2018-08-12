@@ -14,44 +14,51 @@
     </tr>
   </thead>
   <tbody>
-      {% for habit in habits_and_days %}
-        <tr>
-          {% if 'mon' in habit.1 %}
-            <td>{{habit.0}}</td>
-          {% else %}
-            <td></td>
-          {% endif %}
-          {% if 'tue' in habit.1 %}
-            <td>{{habit.0}}</td>
-          {% else %}
-            <td></td>
-          {% endif %}
-          {% if 'wed' in habit.1 %}
-            <td>{{habit.0}}</td>
-          {% else %}
-            <td></td>
-          {% endif %}
-          {% if 'thu' in habit.1 %}
-            <td>{{habit.0}}</td>
-          {% else %}
-            <td></td>
-          {% endif %}
-          {% if 'fri' in habit.1 %}
-            <td>{{habit.0}}</td>
-          {% else %}
-            <td></td>
-          {% endif %}
-          {% if 'sat' in habit.1 %}
-            <td>{{habit.0}}</td>
-          {% else %}
-            <td></td>
-          {% endif %}
-          {% if 'sun' in habit.1 %}
-            <td>{{habit.0}}</td>
-          {% else %}
-            <td></td>
-          {% endif %}
-        </tr>
+      {% for habit in habit_details %}
+      <tr>
+        {% if 'mon' in habit.2 %}
+        <td>{{habit.1}}</td>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% if 'tue' in habit.2 %}
+        <td>{{habit.1}}</td>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% if 'wed' in habit.2 %}
+        <td>{{habit.1}}</td>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% if 'thu' in habit.2 %}
+        <td>{{habit.1}}</td>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% if 'fri' in habit.2 %}
+        <td>{{habit.1}}</td>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% if 'sat' in habit.2 %}
+        <td>{{habit.1}}</td>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% if 'sun' in habit.2 %}
+        <td>{{habit.1}}</td>
+        {% else %}
+        <td></td>
+        {% endif %}
+        <td>
+          <form method="POST" action="{% url 'manage' %}">
+            {% csrf_token %}
+            <input type="hidden" name="remove" value="{{habit.0}}" />
+            <input type="submit" name="submit" value="X" />
+          </form>
+        </td>
+      </tr>
       {% endfor %}
   </tbody>
 </table>
@@ -96,7 +103,7 @@
       </li>
     </ul>
     <p>
-      <input type="submit" value="Add Habit" />
+      <input type="submit" name="submit" value="Add Habit" />
     </p>
   </form>
 </div>
