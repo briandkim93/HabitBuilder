@@ -33,14 +33,14 @@ def signup(request):
                 context['error'] = 'Passwords did not match'
                 return render(request, 'account/signup.html', context)   
             with suppress(User.DoesNotExist):
-                email = User.objects.get(email=request.POST['email'])
+                email = User.objects.get(email=email)
                 context['error'] = 'Email address is already taken'
                 return render(request, 'account/signup.html', context)
             with suppress(User.DoesNotExist):
-                user = User.objects.get(username=request.POST['username'])
+                user = User.objects.get(username=username)
                 context['error'] = 'Username is already taken'
                 return render(request, 'account/signup.html', context)
-            user = User.objects.create_user(request.POST['username'], password=request.POST['password'], email=request.POST['email'])
+            user = User.objects.create_user(username, password=password, email=email)
             auth.login(request, user)
             return
         else:
@@ -48,3 +48,35 @@ def signup(request):
             return render(request, 'account/signup.html', context)
     else:
         return render(request, 'account/signup.html')
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST['username'].lower()
+        password = request.POST['password']
+        context = {
+            'username': username,
+            'error': ''
+        }
+        if username and password:
+            try:
+                user = User.objects.get(username=username)
+            except User.DoesNotExist:
+                context['error'] = 'Username does not exist'
+                return render(request, 'account/login.html', context)
+            user = auth.authenticate(username=username, password=password)
+            if user != None:
+                auth.login(request, user)
+                return
+            else:
+                context['error'] = 'Username or password is incorrect'
+                return render(request, 'account/login.html', context)     
+        else:
+            context['error'] = 'Please do not leave any empty fields'
+            return render(request, 'account/login.html', context)
+    else:
+        return render(request, 'account/login.html')
+
+
+
+
+

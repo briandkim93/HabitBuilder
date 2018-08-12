@@ -1,0 +1,21 @@
+{% extends 'root.html' %}
+
+{% block content %}
+<form method="POST" action="{% url 'login' %}">
+  {% csrf_token %}
+  <p>
+    {{error}}
+  </p>
+  <p>
+    <label for="username">Username:</label>
+    <input id="username" type="text" name="username" value="{{username}}" />
+  </p>
+  <p>
+    <label for="password">Password:</label>
+    <input id="password" type="password" name="password" />
+  </p>
+  <p>
+    <input type="submit" value="Login" />
+  </p>
+</form>
+{% endblock %}
