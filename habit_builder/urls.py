@@ -1,6 +1,9 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+from habit_builder.confidential import ADMIN_URL
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', include('account.urls')),
+    path(ADMIN_URL, admin.site.urls)
 ]
