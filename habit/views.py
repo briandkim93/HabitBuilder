@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 
@@ -30,6 +30,15 @@ def manage(request):
             new_day = Day.objects.get(day=day)
             new_habit.days.add(new_day)
         new_habit.save()
-        return render(request, 'habit/manage.html')
+        return redirect('manage')
     else:
-        return render(request, 'habit/manage.html')
+        habits_and_days = []
+        for habit in Habit.objects.all():
+            days = []
+            for day in habit.days.all():
+                days += [day.day]
+            habits_and_days += [(habit.habit, days)]
+        context = {
+            'habits_and_days': habits_and_days,
+        }
+        return render(request, 'habit/manage.html', context)

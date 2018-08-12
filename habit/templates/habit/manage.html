@@ -1,6 +1,60 @@
 {% extends 'root.html' %}
 
 {% block content %}
+<table>
+  <thead>
+    <tr>
+      <th>Monday</th>
+      <th>Tuesday</th>
+      <th>Wednesday</th>
+      <th>Thursday</th>
+      <th>Friday</th>
+      <th>Saturday</th>
+      <th>Sunday</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for habit in habits_and_days %}
+        <tr>
+          {% if 'mon' in habit.1 %}
+            <td>{{habit.0}}</td>
+          {% else %}
+            <td></td>
+          {% endif %}
+          {% if 'tue' in habit.1 %}
+            <td>{{habit.0}}</td>
+          {% else %}
+            <td></td>
+          {% endif %}
+          {% if 'wed' in habit.1 %}
+            <td>{{habit.0}}</td>
+          {% else %}
+            <td></td>
+          {% endif %}
+          {% if 'thu' in habit.1 %}
+            <td>{{habit.0}}</td>
+          {% else %}
+            <td></td>
+          {% endif %}
+          {% if 'fri' in habit.1 %}
+            <td>{{habit.0}}</td>
+          {% else %}
+            <td></td>
+          {% endif %}
+          {% if 'sat' in habit.1 %}
+            <td>{{habit.0}}</td>
+          {% else %}
+            <td></td>
+          {% endif %}
+          {% if 'sun' in habit.1 %}
+            <td>{{habit.0}}</td>
+          {% else %}
+            <td></td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+  </tbody>
+</table>
 <div>
   <form method="POST" action="{% url 'manage' %}">
     {% csrf_token %}
