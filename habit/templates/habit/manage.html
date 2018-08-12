@@ -1,0 +1,49 @@
+{% extends 'root.html' %}
+
+{% block content %}
+<div>
+  <form method="POST" action="{% url 'manage' %}">
+    {% csrf_token %}
+    <p>
+      {{error}}
+    </p>
+    <p>
+      <label for="habit">Habit Name:</label>
+      <input id="habit" type="text" name="habit" />
+    </p>
+    <ul>
+      <li>
+        <label for="mon">MON</label>
+        <input id="mon" type="checkbox" name="days" value="mon" />
+      </li>
+      <li>
+        <label for="tue">TUE</label>
+        <input id="tue" type="checkbox" name="days" value="tue" />
+      </li>
+      <li>
+        <label for="wed">WED</label>
+        <input id="wed" type="checkbox" name="days" value="wed" />
+      </li>
+      <li>
+        <label for="thu">THU</label>
+        <input id="thu" type="checkbox" name="days" value="thu" />
+      </li>
+      <li>
+        <label for="fri">FRI</label>
+        <input id="fri" type="checkbox" name="days" value="fri" />
+      </li>
+      <li>
+        <label for="sat">SAT</label>
+        <input id="sat" type="checkbox" name="days" value="sat" />
+      </li>
+      <li>
+        <label for="sun">SUN</label>
+        <input id="sun" type="checkbox" name="days" value="sun" />
+      </li>
+    </ul>
+    <p>
+      <input type="submit" value="Add Habit" />
+    </p>
+  </form>
+</div>
+{% endblock %}

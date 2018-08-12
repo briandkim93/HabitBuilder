@@ -1,0 +1,51 @@
+[
+  {
+    "model": "habit.day",
+    "pk": 1,
+    "fields": {
+      "day": "mon"
+    }
+  },
+  {
+    "model": "habit.day",
+    "pk": 2,
+    "fields": {
+      "day": "tue"
+    }
+  },
+  {
+    "model": "habit.day",
+    "pk": 3,
+    "fields": {
+      "day": "wed"
+    }
+  },
+  {
+    "model": "habit.day",
+    "pk": 4,
+    "fields": {
+      "day": "thu"
+    }
+  },
+  {
+    "model": "habit.day",
+    "pk": 5,
+    "fields": {
+      "day": "fri"
+    }
+  },
+  {
+    "model": "habit.day",
+    "pk": 6,
+    "fields": {
+      "day": "sat"
+    }
+  },
+  {
+    "model": "habit.day",
+    "pk": 7,
+    "fields": {
+      "day": "sun"
+    }
+  }
+]
