@@ -48,7 +48,10 @@ def signup(request):
             context['error'] = 'Please do not leave any empty fields'
             return render(request, 'account/signup.html', context)
     else:
-        return render(request, 'account/signup.html')
+        if request.user.is_authenticated:
+            return redirect('/habits/day/' + (datetime.now() - timedelta(hours=7)).date().isoformat())
+        else:
+            return render(request, 'account/signup.html')
 
 def login(request):
     if request.method == 'POST':
