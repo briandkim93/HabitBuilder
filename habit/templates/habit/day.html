@@ -1,0 +1,16 @@
+{% extends 'root.html' %}
+
+{% block content %}
+<div>
+  <a href="{% url 'day' prev_date_slug %}">Prev</a>
+  <h1>{{day_str}}</h1>
+  <a href="{% url 'day' next_date_slug %}">Next</a>
+  <ul>
+    {% for habit in habit_details %}
+    {% if day_str_abbr in habit.2 and habit.3 == True %}
+    <li>{{habit.1}}</li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
