@@ -14,47 +14,47 @@
     </tr>
   </thead>
   <tbody>
-      {% for habit in habit_details %}
+      {% for habit_detail in habit_details %}
       <tr>
-        {% if 'mon' in habit.2 %}
-        <td>{{habit.1}}</td>
+        {% if 'mon' in habit_detail.days %}
+        <td>{{habit_detail.habit}}</td>
         {% else %}
         <td></td>
         {% endif %}
-        {% if 'tue' in habit.2 %}
-        <td>{{habit.1}}</td>
+        {% if 'tue' in habit_detail.days %}
+        <td>{{habit_detail.habit}}</td>
         {% else %}
         <td></td>
         {% endif %}
-        {% if 'wed' in habit.2 %}
-        <td>{{habit.1}}</td>
+        {% if 'wed' in habit_detail.days %}
+        <td>{{habit_detail.habit}}</td>
         {% else %}
         <td></td>
         {% endif %}
-        {% if 'thu' in habit.2 %}
-        <td>{{habit.1}}</td>
+        {% if 'thu' in habit_detail.days %}
+        <td>{{habit_detail.habit}}</td>
         {% else %}
         <td></td>
         {% endif %}
-        {% if 'fri' in habit.2 %}
-        <td>{{habit.1}}</td>
+        {% if 'fri' in habit_detail.days %}
+        <td>{{habit_detail.habit}}</td>
         {% else %}
         <td></td>
         {% endif %}
-        {% if 'sat' in habit.2 %}
-        <td>{{habit.1}}</td>
+        {% if 'sat' in habit_detail.days %}
+        <td>{{habit_detail.habit}}</td>
         {% else %}
         <td></td>
         {% endif %}
-        {% if 'sun' in habit.2 %}
-        <td>{{habit.1}}</td>
+        {% if 'sun' in habit_detail.days %}
+        <td>{{habit_detail.habit}}</td>
         {% else %}
         <td></td>
         {% endif %}
         <td>
           <form method="POST" action="{% url 'manage' %}">
             {% csrf_token %}
-            <input type="hidden" name="remove" value="{{habit.0}}" />
+            <input type="hidden" name="remove" value="{{habit_detail.id}}" />
             <input type="submit" name="submit" value="X" />
           </form>
         </td>
