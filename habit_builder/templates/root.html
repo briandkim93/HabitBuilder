@@ -4,6 +4,7 @@
     {% load staticfiles %}
     <title>HabitBuilder</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/root.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/manage.css' %}" />
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
   </head>
   <body>
@@ -37,5 +38,6 @@
     </nav>
     {% block content %}
     {% endblock %}
+    <script type="text/javascript" src="{% static 'js/manage.js' %}"></script>
   </body>
 </html>

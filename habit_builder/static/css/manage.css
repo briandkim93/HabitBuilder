@@ -1,15 +1,108 @@
+.add-menu {
+  box-sizing: border-box;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -150px;
+  margin-left: -175px;
+  width: 350px;
+  height: 300px;
+  background-color: #2C2C2C;
+  border: 1px solid #191919;
+  color: #ffffff;
+  padding: 15px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 1.2rem;
+}
+
+.close-button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  background-color: #F15025;
+  color: #ffffff;
+  border-left: 1px solid #191919;
+  border-bottom: 1px solid #191919;
+}
+
+.hidden {
+  display: none;
+}
+
+.add-menu p {
+  margin: 15px 0;
+}
+
+.add-menu input[type="text"] {
+  width: 300px;
+  height: 30px;
+  font-size: inherit;
+}
+
+.add-menu input[type="checkbox"] {
+  display: none;
+}
+
+#days-list {
+  padding: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.day-item {
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 2px;
+  margin: 0 1px;
+  font-size: 0.9rem;
+  text-align: center;
+  border: 1px solid #191919;
+  width: 40px;
+  height: 40px;
+  background-color: #F15025;
+  color: #ffffff;
+  border-radius: 3px;
+  line-height: 40px;
+}
+
+.day-item:hover, .close-button:hover {
+  cursor: pointer;
+  background-color: #F29A82;
+}
+
+.selected {
+  background-color: #FFCFC1;
+  color: #191919;
+}
+
+.error-message {
+  position: absolute;
+  font-size: 0.8rem;
+  color: #FF0000;
+}
+
+.submit-button {
+  -webkit-appearance: none;
+  position: absolute;
+  margin-top: 10px;
+  right: 30px;
+  width: 100px;
+  height: 30px;
+  font-size: 1.2rem;
+  border: 0;
+}
+
+.submit-button:hover {
+  cursor: pointer;
+  background-color: #aaaaaa;
+}
+
 @media (min-width: 576px) {
-
-}
-
-@media (min-width: 768px) {
-
-}
-
-@media (min-width: 992px) {
-
-}
-
-@media (min-width: 1200px) {
 
 }

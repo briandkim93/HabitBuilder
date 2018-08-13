@@ -62,49 +62,43 @@
       {% endfor %}
   </tbody>
 </table>
-<div>
+<div class="add-menu">
+  <div class="close-button">
+    x
+  </div>
   <form method="POST" action="{% url 'manage' %}">
     {% csrf_token %}
     <p>
-      {{error}}
-    </p>
-    <p>
       <label for="habit">Habit Name:</label>
-      <input id="habit" type="text" name="habit" />
     </p>
-    <ul>
-      <li>
-        <label for="mon">MON</label>
-        <input id="mon" type="checkbox" name="days" value="mon" />
-      </li>
-      <li>
-        <label for="tue">TUE</label>
-        <input id="tue" type="checkbox" name="days" value="tue" />
-      </li>
-      <li>
-        <label for="wed">WED</label>
-        <input id="wed" type="checkbox" name="days" value="wed" />
-      </li>
-      <li>
-        <label for="thu">THU</label>
-        <input id="thu" type="checkbox" name="days" value="thu" />
-      </li>
-      <li>
-        <label for="fri">FRI</label>
-        <input id="fri" type="checkbox" name="days" value="fri" />
-      </li>
-      <li>
-        <label for="sat">SAT</label>
-        <input id="sat" type="checkbox" name="days" value="sat" />
-      </li>
-      <li>
-        <label for="sun">SUN</label>
-        <input id="sun" type="checkbox" name="days" value="sun" />
-      </li>
-    </ul>
     <p>
-      <input type="submit" name="submit" value="Add Habit" />
+      <input id="habit" type="text" name="habit" value="{{habit}}" />
+    </p>
+    <p>
+      Days:
+    </p>
+    <div id="days-list">
+        <label class="day-item" for="mon">MON</label>
+        <input id="mon" type="checkbox" name="days" value="mon" />
+        <label class="day-item"  for="tue">TUE</label>
+        <input id="tue" type="checkbox" name="days" value="tue" />
+        <label class="day-item"  for="wed">WED</label>
+        <input id="wed" type="checkbox" name="days" value="wed" />
+        <label class="day-item"  for="thu">THU</label>
+        <input id="thu" type="checkbox" name="days" value="thu" />
+        <label class="day-item"  for="fri">FRI</label>
+        <input id="fri" type="checkbox" name="days" value="fri" />
+        <label class="day-item"  for="sat">SAT</label>
+        <input id="sat" type="checkbox" name="days" value="sat" />
+        <label class="day-item"  for="sun">SUN</label>
+        <input id="sun" type="checkbox" name="days" value="sun" />
+    </div>
+    <p>
+      <input class="submit-button" type="submit" name="submit" value="Add" />
     </p>
   </form>
+  <p class="error-message">
+    {{error}}
+  </p>
 </div>
 {% endblock %}

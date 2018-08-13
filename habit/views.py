@@ -88,19 +88,31 @@ def day(request, date_slug):
 
 @login_required(login_url='/')
 def manage(request):
+    habit_details = []
+    for habit_obj in Habit.objects.filter(user__username=request.user.username):
+        days = []
+        for day in habit_obj.days.all():
+            days += [day.day]
+        habit_detail = {}
+        habit_detail['id'] = habit_obj.id
+        habit_detail['habit'] = habit_obj.habit
+        habit_detail['days'] = days
+        habit_details += [habit_detail]
+    context = {
+        'habit': '',
+        'habit_details': habit_details,
+        'error': ''
+    }
     if request.method == 'POST':
-        if request.POST['submit'] == 'Add Habit':
+        if request.POST['submit'] == 'Add':
             habit = request.POST['habit']
             days = request.POST.getlist('days')
-            context = {
-                'habit': habit,
-                'error': ''
-            }
+            context['habit'] = habit
             if not habit:
-                context['error'] == 'Please enter a habit name'
+                context['error'] = 'Enter a habit name!'
                 return render(request, 'habit/manage.html', context)
             if len(days) == 0:
-                context['error'] == 'Please select the days that this habit is to be completed'
+                context['error'] = 'Select the days for this habit!'
                 return render(request, 'habit/manage.html', context)
             new_habit = Habit()
             new_habit.habit = habit
@@ -118,17 +130,4 @@ def manage(request):
             habit_obj.delete()
             return redirect('manage')
     else:
-        habit_details = []
-        for habit_obj in Habit.objects.filter(user__username=request.user.username):
-            days = []
-            for day in habit_obj.days.all():
-                days += [day.day]
-            habit_detail = {}
-            habit_detail['id'] = habit_obj.id
-            habit_detail['habit'] = habit_obj.habit
-            habit_detail['days'] = days
-            habit_details += [habit_detail]
-        context = {
-            'habit_details': habit_details,
-        }
         return render(request, 'habit/manage.html', context)
