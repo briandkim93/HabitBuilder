@@ -6,9 +6,25 @@
   <h1>{{day_str}}</h1>
   <a href="{% url 'day' next_date_slug %}">Next</a>
   <ul>
-    {% for habit in habit_details %}
-    {% if day_str_abbr in habit.2 and habit.3 == True %}
-    <li>{{habit.1}}</li>
+    {% for habit_detail in habit_details %}
+    {% if day_str_abbr in habit_detail.days and habit_detail.should_display == True %}
+    <li>
+      {{habit_detail.habit}}
+      {% if date_slug in habit_detail.dates_completed %}
+      <form method="POST" action="{% url 'day' date_slug %}">
+        {% csrf_token %}
+        <input type="hidden" name="habit_id" value="{{habit_detail.id}}" />
+        <input type="hidden" name="date_completed" value="{{date_slug}}" />
+        <input type="submit" name="submit" value="Undo">
+      </form>
+      {% else %}
+      <form method="POST" action="{% url 'day' date_slug %}">
+        {% csrf_token %}
+        <input type="hidden" name="habit_id" value="{{habit_detail.id}}" />
+        <input type="submit" name="submit" value="Done">
+      </form>
+      {% endif %}
+    </li>
     {% endif %}
     {% endfor %}
   </ul>

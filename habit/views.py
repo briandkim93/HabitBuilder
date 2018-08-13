@@ -1,56 +1,90 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.utils import timezone
-from datetime import date, timedelta
+from datetime import datetime, date, timedelta
 
 from .models import Day
+from .models import DateCompleted
 from .models import Habit
 
 # Create your views here.
 @login_required(login_url='/')
 def day(request, date_slug):
     date_obj = date.fromisoformat(date_slug)
-    day_int = date_obj.weekday()
-    day_str = ''
-    if day_int == 0:
-        day_str = 'Monday'
-        day_str_abbr = 'mon'
-    elif day_int == 1:
-        day_str = 'Tuesday'
-        day_str_abbr = 'tue'
-    elif day_int == 2:
-        day_str = 'Wednesday'
-        day_str_abbr = 'wed'
-    elif day_int == 3:
-        day_str = 'Thursday'
-        day_str_abbr = 'thu'
-    elif day_int == 4:
-        day_str = 'Friday'
-        day_str_abbr = 'fri'
-    elif day_int == 5:
-        day_str = 'Saturday'
-        day_str_abbr = 'sat'
-    elif day_int == 6:
-        day_str = 'Sunday'
-        day_str_abbr = 'sun'
-    prev_date_slug = str(date_obj - timedelta(days=1))
-    next_date_slug = str(date_obj + timedelta(days=1))
-    habit_details = []
-    for habit in Habit.objects.filter(user__username=request.user.username):
-        days = []
-        for day in habit.days.all():
-            days += [day.day]
-        should_display = habit.date_created <= date_obj
-        habit_details += [[habit.id, habit.habit, days, should_display]]
-    context = {
-        'date': date_slug,
-        'day_str': day_str,
-        'day_str_abbr': day_str_abbr,
-        'prev_date_slug': prev_date_slug,
-        'next_date_slug': next_date_slug,
-        'habit_details': habit_details
-    }
-    return render(request, 'habit/day.html', context)
+    if request.method == 'POST':
+        habit_id = request.POST['habit_id']
+        if request.POST['submit'] == 'Done':
+            habit_obj = Habit.objects.get(id=habit_id)
+            try:
+                date_completed_obj = DateCompleted.objects.get(date_completed=date_obj)
+                habit_obj.dates_completed.add(date_completed_obj)
+                habit_obj.save()
+                return redirect('/habits/day/' + date_slug)
+            except DateCompleted.DoesNotExist:
+                new_date_completed = DateCompleted()
+                new_date_completed.date_completed = date_obj
+                new_date_completed.save()
+                habit_obj.dates_completed.add(new_date_completed)
+                habit_obj.save()
+                return redirect('/habits/day/' + date_slug)
+        else:
+            habit_obj = Habit.objects.get(id=habit_id)
+            date_slug = request.POST['date_completed']
+            date_obj = date.fromisoformat(date_slug)
+            date_completed_obj = DateCompleted.objects.get(date_completed=date_obj)
+            habit_obj.dates_completed.remove(date_completed_obj)
+            habit_obj.save()
+            return redirect('/habits/day/' + date_slug)
+    else:
+        day_int = date_obj.weekday()
+        day_str = ''
+        if day_int == 0:
+            day_str = 'Monday'
+            day_str_abbr = 'mon'
+        elif day_int == 1:
+            day_str = 'Tuesday'
+            day_str_abbr = 'tue'
+        elif day_int == 2:
+            day_str = 'Wednesday'
+            day_str_abbr = 'wed'
+        elif day_int == 3:
+            day_str = 'Thursday'
+            day_str_abbr = 'thu'
+        elif day_int == 4:
+            day_str = 'Friday'
+            day_str_abbr = 'fri'
+        elif day_int == 5:
+            day_str = 'Saturday'
+            day_str_abbr = 'sat'
+        elif day_int == 6:
+            day_str = 'Sunday'
+            day_str_abbr = 'sun'
+        prev_date_slug = str(date_obj - timedelta(days=1))
+        next_date_slug = str(date_obj + timedelta(days=1))
+        habit_details = []
+        for habit_obj in Habit.objects.filter(user__username=request.user.username):
+            days = []
+            for day_obj in habit_obj.days.all():
+                days += [day_obj.day]
+            should_display = habit_obj.date_created <= date_obj
+            habit_detail = {}
+            habit_detail['id'] = habit_obj.id
+            habit_detail['habit'] = habit_obj.habit
+            habit_detail['days'] = days
+            dates_completed = []
+            for date_completed_obj in habit_obj.dates_completed.all():
+                dates_completed += [date_completed_obj.date_completed.isoformat()]
+            habit_detail['dates_completed'] = dates_completed
+            habit_detail['should_display'] = should_display
+            habit_details += [habit_detail]
+        context = {
+            'date_slug': date_slug,
+            'day_str': day_str,
+            'day_str_abbr': day_str_abbr,
+            'prev_date_slug': prev_date_slug,
+            'next_date_slug': next_date_slug,
+            'habit_details': habit_details
+        }
+        return render(request, 'habit/day.html', context)
 
 @login_required(login_url='/')
 def manage(request):
@@ -71,7 +105,7 @@ def manage(request):
             new_habit = Habit()
             new_habit.habit = habit
             new_habit.user = request.user
-            new_habit.date_created = timezone.localdate()
+            new_habit.date_created = (datetime.now() - timedelta(hours=7)).date().isoformat()
             new_habit.save()
             for day in days:
                 new_day = Day.objects.get(day=day)
@@ -80,16 +114,20 @@ def manage(request):
             return redirect('manage')
         else:
             habit_id = request.POST['remove']
-            habit = Habit.objects.get(id=habit_id)
-            habit.delete()
+            habit_obj = Habit.objects.get(id=habit_id)
+            habit_obj.delete()
             return redirect('manage')
     else:
         habit_details = []
-        for habit in Habit.objects.filter(user__username=request.user.username):
+        for habit_obj in Habit.objects.filter(user__username=request.user.username):
             days = []
-            for day in habit.days.all():
+            for day in habit_obj.days.all():
                 days += [day.day]
-            habit_details += [[habit.id, habit.habit, days]]
+            habit_detail = {}
+            habit_detail['id'] = habit_obj.id
+            habit_detail['habit'] = habit_obj.habit
+            habit_detail['days'] = days
+            habit_details += [habit_detail]
         context = {
             'habit_details': habit_details,
         }

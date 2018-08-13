@@ -10,7 +10,7 @@ class Day(models.Model):
 class DateCompleted(models.Model):
     date_completed = models.DateField()
     def __str__(self):
-        return self.date_completed
+        return str(self.date_completed)
 
 class Habit(models.Model):
     habit = models.CharField(max_length=70)
