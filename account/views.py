@@ -4,6 +4,7 @@ from contextlib import suppress
 from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.contrib.auth.models import User
+from datetime import datetime, date, timedelta
 
 # Create your views here.
 def signup(request):
@@ -42,7 +43,7 @@ def signup(request):
                 return render(request, 'account/signup.html', context)
             user = User.objects.create_user(username, password=password, email=email)
             auth.login(request, user)
-            return redirect('manage')
+            return redirect('/habits/day/' + (datetime.now() - timedelta(hours=7)).date().isoformat())
         else:
             context['error'] = 'Please do not leave any empty fields'
             return render(request, 'account/signup.html', context)
@@ -66,7 +67,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user != None:
                 auth.login(request, user)
-                return redirect('manage')
+                return redirect('/habits/day/' + (datetime.now() - timedelta(hours=7)).date().isoformat())
             else:
                 context['error'] = 'Username or password is incorrect'
                 return render(request, 'account/login.html', context)     
