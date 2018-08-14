@@ -130,15 +130,27 @@ th {
   background-color: #307a3a;
 }
 
+.add-cell:hover {
+  background-color: #51935A;
+}
+
 .data-cell {
   color: #ffffff;
   background-color: #2c2c2c;
+}
+
+.habit-cell {
+  border-right: 1px solid #777777;
 }
 
 .remove-cell {
   padding: 0;
 
   background-color: #f15025;
+}
+
+.remove-cell:hover {
+  background-color: #f29a82;
 }
 
 .remove-button {

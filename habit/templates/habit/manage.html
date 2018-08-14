@@ -15,7 +15,7 @@
   <tbody>
       {% for habit_detail in habit_details %}
       <tr>
-        <td class="data-cell">{{habit_detail.habit}}</td>
+        <td class="data-cell habit-cell">{{habit_detail.habit}}</td>
         <td class="data-cell">{{habit_detail.days}}</td>
         <td class="remove-cell">
           <form method="POST" action="{% url 'manage' %}">
