@@ -10,7 +10,7 @@ hr {
 
 .signup-menu {
   margin-top: 50px;
-  width: 270px;
+  width: 280px;
   height: 360px;
   font-size: 1.0rem;
 }
@@ -25,7 +25,7 @@ hr {
 }
 
 .signup-menu input[type="text"], .signup-menu input[type="password"], .signup-menu input[type="email"] {
-  width: 200px;
+  width: 230px;
   height: 25px;
 }
 
@@ -38,7 +38,7 @@ hr {
 .error-message {
   text-align: center;
   color: #CE0101;
-  width: 55%;
+  width: 60%;
   font-size: 0.8rem;
 }
 

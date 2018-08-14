@@ -10,7 +10,7 @@ hr {
 
 .login-menu {
   margin-top: 50px;
-  width: 250px;
+  width: 280px;
   height: 300px;
   font-size: 1.0rem;
 }
@@ -22,7 +22,7 @@ hr {
 }
 
 .login-menu input[type="text"], .login-menu input[type="password"] {
-  width: 200px;
+  width: 230px;
   height: 30px;
 }
 
