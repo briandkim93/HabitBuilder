@@ -108,7 +108,6 @@ def manage(request):
     context = {
         'habit': '',
         'habit_details': habit_details,
-        'error': ''
     }
     if request.method == 'POST':
         if request.POST['submit'] == 'Add':
@@ -116,10 +115,8 @@ def manage(request):
             days = request.POST.getlist('days')
             context['habit'] = habit
             if not habit:
-                context['error'] = 'Enter a habit name!'
                 return render(request, 'habit/manage.html', context)
             if len(days) == 0:
-                context['error'] = 'Select the days for this habit!'
                 return render(request, 'habit/manage.html', context)
             new_habit = Habit()
             new_habit.habit = habit
