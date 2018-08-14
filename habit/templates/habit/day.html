@@ -1,30 +1,45 @@
 {% extends 'root.html' %}
+{% load staticfiles %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/day.css' %}" />
+{% endblock %}
 
 {% block content %}
-<div>
-  <a href="{% url 'day' prev_date_slug %}">Prev</a>
+<div class="day-detail">
+  <a href="{% url 'day' prev_date_slug %}">&#9664;</a>
   <h1>{{day_str}}</h1>
-  <a href="{% url 'day' next_date_slug %}">Next</a>
-  <ul>
+  <a href="{% url 'day' next_date_slug %}">&#9654;</a>
+  <h2 class="date">{{formatted_date}}</h2>
+  <hr />
+  <ul class="habits-list">
+    {% if displayed_habits_len == 0 %}
+    <li class="habit">
+      <p class="no-habits-message">No Habits for Today</p>
+       <hr class="habit-rule" />
+    </li>
+    {% endif %}
     {% for habit_detail in habit_details %}
     {% if day_str_abbr in habit_detail.days and habit_detail.should_display == True %}
-    <li>
-      {{habit_detail.habit}}
+    <li class="habit">
       {% if date_slug in habit_detail.dates_completed %}
+      <p class="habit-title done">{{habit_detail.habit}}</p>
       <form method="POST" action="{% url 'day' date_slug %}">
         {% csrf_token %}
         <input type="hidden" name="habit_id" value="{{habit_detail.id}}" />
         <input type="hidden" name="date_completed" value="{{date_slug}}" />
-        <input type="submit" name="submit" value="Undo">
+        <input class="status-button" type="submit" name="submit" value="Undo">
       </form>
       {% else %}
+      <p class="habit-title">{{habit_detail.habit}}</p>
       <form method="POST" action="{% url 'day' date_slug %}">
         {% csrf_token %}
         <input type="hidden" name="habit_id" value="{{habit_detail.id}}" />
-        <input type="submit" name="submit" value="Done">
+        <input class="status-button" type="submit" name="submit" value="Done">
       </form>
       {% endif %}
     </li>
+    <hr class="habit-rule" />
     {% endif %}
     {% endfor %}
   </ul>

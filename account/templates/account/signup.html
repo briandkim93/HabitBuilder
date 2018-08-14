@@ -6,40 +6,43 @@
 {% endblock %}
 
 {% block content %}
-<div class="form signup-menu">
-  <img class="logo" src="{% static 'hb-logo.png' %}" alt="HabitBuilder logo" />
-  <form method="POST" action="{% url 'signup' %}">
-    {% csrf_token %}
-    <p>
-      {{error}}
-    </p>
-    <p>
-      <label for="username">Username:</label>
-    </p>
-    <p>
-      <input id="username" type="text" name="username" value="{{username}}" />
-    </p>
-    <p>
-      <label for="password">Password:</label>
-    </p>
-    <p>
-      <input id="password" type="password" name="password" />
-    </p>
-    <p>
-      <label for="confirm-password">Confirm Password:</label>
-    </p>
-    <p>
-      <input id="confirm-password" type="password" name="confirm-password" />
-    </p>
-    <p>
-      <label for="email">Email:</label>
-    </p>
-    <p>
-      <input id="email" type="email" name="email" value="{{email}}" />
-    </p>
-    <p>
-      <input class="submit-button" type="submit" value="Sign Up" />
-    </p>
-  </form>
+<div class="signup-container">
+  <div class="form-container signup-menu">
+    <h1 class="signup-header">Sign Up</h1>
+    <hr />
+    <form method="POST" action="{% url 'signup' %}">
+      {% csrf_token %}
+      <p>
+        {{error}}
+      </p>
+      <p>
+        <label for="username">Username:</label>
+      </p>
+      <p>
+        <input id="username" type="text" name="username" value="{{username}}" />
+      </p>
+      <p>
+        <label for="password">Password:</label>
+      </p>
+      <p>
+        <input id="password" type="password" name="password" />
+      </p>
+      <p>
+        <label for="confirm-password">Confirm Password:</label>
+      </p>
+      <p>
+        <input id="confirm-password" type="password" name="confirm-password" />
+      </p>
+      <p>
+        <label for="email">Email:</label>
+      </p>
+      <p>
+        <input id="email" type="email" name="email" value="{{email}}" />
+      </p>
+      <p>
+        <input class="submit-button" type="submit" value="Sign Up" />
+      </p>
+    </form>
+  </div>
 </div>
 {% endblock %}
