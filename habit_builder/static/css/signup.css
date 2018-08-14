@@ -1,8 +1,18 @@
+.signup-header {
+  text-align: center;
+  margin: 0;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+hr {
+  border-color: #F15025;
+}
+
 .signup-menu {
   margin-top: -175px;
   margin-left: -125px;
   width: 250px;
-  height: 350px;
+  height: 360px;
   font-size: 1.0rem;
 }
 

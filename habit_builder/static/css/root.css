@@ -3,6 +3,7 @@ html, body {
   margin: 0;
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   color: #191919;
+  height: 100%;
 }
 
 .nav-bar {

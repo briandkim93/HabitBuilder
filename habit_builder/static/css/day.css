@@ -1,0 +1,85 @@
+h1 {
+  display: inline-block;
+  font-size: 3.0rem;
+  margin-top: 15px 0;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: #F15025;
+}
+
+hr {
+  width: 80%;
+}
+
+.day-detail {
+  background-color: #2C2C2C;
+  width: 90%;
+  margin: auto;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 10px;
+  padding-bottom: 50px;
+}
+
+.date {
+  margin-top: 0; 
+}
+
+.habits-list {
+  padding: 0;
+  width: 80%;
+  margin: 20px auto;
+  list-style: none;
+}
+
+.habit {
+  position: relative;
+  text-align: left;
+}
+
+.habit-title {
+  display: inline-block;
+  font-size: 2.0rem;
+}
+
+.no-habits-message {
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  font-size: 2.0rem;
+}
+
+.status-button {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-appearance: none;
+  margin-top: -20px;
+  width: 80px;
+  height: 40px;
+  border: 0;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  color: #ffffff;
+  background-color: #F15025;
+}
+
+.status-button:hover {
+  cursor: pointer;
+  background-color: #F29A82;
+}
+
+.done {
+  color: #4c4c4c;
+}
+
+.habit-rule {
+  width: 100%
+}

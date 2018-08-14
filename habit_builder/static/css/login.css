@@ -1,8 +1,18 @@
+.login-header {
+  text-align: center;
+  margin: 0;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+hr {
+  border-color: #F15025;
+}
+
 .login-menu {
-  margin-top: -160px;
+  margin-top: -150px;
   margin-left: -125px;
   width: 250px;
-  height: 320px;
+  height: 300px;
   font-size: 1.0rem;
 }
 
@@ -21,12 +31,16 @@
   width: 100px;
   height: 30px;
   font-size: 1.2rem;
+  background-color: #F15025;
+  color: #ffffff;
 }
 
 @media (min-width: 576px) {
   .login-menu {
     margin-left: -175px;
     width: 350px;
+    margin-top: -160px;
+    height: 320px;
     font-size: 1.2rem;
   }
   .login-menu input[type="text"], .login-menu input[type="password"] {
