@@ -1,0 +1,51 @@
+.login-menu {
+  box-sizing: border-box;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -175px;
+  margin-left: -175px;
+  width: 350px;
+  height: 350px;
+  background-color: #2C2C2C;
+  border: 1px solid #191919;
+  color: #ffffff;
+  padding: 15px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 1.2rem;
+}
+
+.logo {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.login-menu p {
+  margin: 15px 0;
+}
+
+.login-menu input[type="text"], .login-menu input[type="password"] {
+  width: 300px;
+  height: 30px;
+  font-size: inherit;
+  border: 0;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.submit-button {
+  -webkit-appearance: none;
+  position: absolute;
+  margin-top: 10px;
+  right: 30px;
+  width: 100px;
+  height: 30px;
+  font-size: 1.2rem;
+  border: 0;
+}
+
+.submit-button:hover {
+  cursor: pointer;
+  background-color: #aaaaaa;
+}
