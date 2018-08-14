@@ -60,6 +60,10 @@ hr {
   margin-bottom: 2px;
 }
 
+.no-streak {
+  color: #666666 !important;
+}
+
 .completed-streak {
   margin: 0;
 
