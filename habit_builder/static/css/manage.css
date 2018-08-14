@@ -1,11 +1,10 @@
 .add-menu {
-  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
-  margin-top: -150px;
-  margin-left: -175px;
-  width: 350px;
+  margin-top: -160px;
+  margin-left: -165px;
+  width: 320px;
   height: 300px;
   font-size: 1.2rem;
 }
@@ -30,7 +29,7 @@
 }
 
 .add-menu input[type="text"] {
-  width: 300px;
+  width: 280px;
   height: 30px;
 }
 
@@ -102,7 +101,7 @@ th, td {
 
 .add-habit {
   background-color: #21b721;
-  color: #000000
+  color: #ffffff;
 }
 
 .data-cell {

@@ -1,20 +1,25 @@
-let add_menu_el = document.getElementsByClassName('add-menu')[0];
-let close_button_el = document.getElementsByClassName('close-button')[0];
-let days_list_el = document.getElementsByClassName('days-list')[0];
+let addMenuEl = document.getElementsByClassName('add-menu')[0];
+let closeButtonEl = document.getElementsByClassName('close-button')[0];
+let daysListEl = document.getElementsByClassName('days-list')[0];
+let addHabitEl = document.getElementsByClassName('add-habit')[0];
 
-if (add_menu_el && close_button_el && days_list_el) {
-    close_button_el.addEventListener('click', function() {
-        add_menu_el.classList.add('hidden');
+if (addMenuEl && closeButtonEl && daysListEl && addHabitEl) {
+    closeButtonEl.addEventListener('click', function() {
+        addMenuEl.classList.add('hidden');
     }, false);
 
-    days_list_el.addEventListener('click', function(event) {
-        day_item_el = event.target;
-        if (day_item_el.nodeName == 'LABEL') {
-            if (day_item_el.classList.contains('selected')) {
-                day_item_el.classList.remove('selected');
+    daysListEl.addEventListener('click', function(event) {
+        dayItemEl = event.target;
+        if (dayItemEl.nodeName == 'LABEL') {
+            if (dayItemEl.classList.contains('selected')) {
+                dayItemEl.classList.remove('selected');
             } else {
-                day_item_el.classList.add('selected');
+                dayItemEl.classList.add('selected');
             }
         }
     }, true);
+    addHabitEl.addEventListener('click', function() {
+        console.log('clicked');
+        addMenuEl.classList.remove('hidden');
+    }, false);
 }
