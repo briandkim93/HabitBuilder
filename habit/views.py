@@ -58,6 +58,7 @@ def day(request, date_slug):
         elif day_int == 6:
             day_str = 'Sunday'
             day_str_abbr = 'sun'
+        formatted_date = date_obj.strftime("%B %d, %Y")
         prev_date_slug = str(date_obj - timedelta(days=1))
         next_date_slug = str(date_obj + timedelta(days=1))
         habit_details = []
@@ -76,13 +77,19 @@ def day(request, date_slug):
             habit_detail['dates_completed'] = dates_completed
             habit_detail['should_display'] = should_display
             habit_details += [habit_detail]
+        displayed_habits_len = 0
+        for habit_detail in habit_details:
+            if habit_detail['should_display'] == True:
+                displayed_habits_len += 1
         context = {
             'date_slug': date_slug,
+            'formatted_date': formatted_date,
             'day_str': day_str,
             'day_str_abbr': day_str_abbr,
             'prev_date_slug': prev_date_slug,
             'next_date_slug': next_date_slug,
-            'habit_details': habit_details
+            'habit_details': habit_details,
+            'displayed_habits_len': displayed_habits_len
         }
         return render(request, 'habit/day.html', context)
 
