@@ -89,19 +89,15 @@ table {
   text-align: center;
 }
 
-th {
-  background-color: #444444;
-  color: #ffffff;
-}
-
-th, td {
+td {
   padding: 5px;
-  border: 1px solid #333333;
+  border-bottom: 1px solid #777777;
 }
 
 .add-cell {
   background-color: #307a3a;
   color: #ffffff;
+  border: 0;
 }
 
 .data-cell {
@@ -126,4 +122,10 @@ th, td {
 
 .remove-button:hover, .add-cell:hover{
   cursor: pointer;
+}
+
+@media (min-width: 576px) {
+  td {
+    font-size: 1.5rem;
+  }
 }
