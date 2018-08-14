@@ -37,6 +37,7 @@ def day(request, date_slug):
     else:
         day_int = date_obj.weekday()
         day_str = ''
+        all_days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
         if day_int == 0:
             day_str = 'Monday'
             day_str_abbr = 'mon'
@@ -77,11 +78,27 @@ def day(request, date_slug):
                 dates_completed_objs += [date_completed_obj.date_completed]
                 dates_completed += [date_completed_obj.date_completed.isoformat()]
             days_in_a_row = 0
-            if date_obj in dates_completed_objs:
-                days_in_a_row = 1
-                while (date_obj - timedelta(days=1)) in dates_completed_objs:
-                    days_in_a_row += 1
-                    date_obj = date_obj - timedelta(days=1)
+            date_obj2 = date_obj
+            while date_obj2 in dates_completed_objs:
+                day_int2 = date_obj2.weekday()
+                if day_int2 == 0:
+                    day_str_abbr2 = 'mon'
+                elif day_int2 == 1:
+                    day_str_abbr2 = 'tue'
+                elif day_int2 == 2:
+                    day_str_abbr2 = 'wed'
+                elif day_int2 == 3:
+                    day_str_abbr2 = 'thu'
+                elif day_int2 == 4:
+                    day_str_abbr2 = 'fri'
+                elif day_int2 == 5:
+                    day_str_abbr2 = 'sat'
+                elif day_int2 == 6:
+                    day_str_abbr2 = 'sun'
+                prev_day = days[days.index(day_str_abbr2) - 1]
+                offset = (all_days.index(day_str_abbr2) - all_days.index(prev_day)) % 7
+                days_in_a_row += 1
+                date_obj2 = date_obj2 - timedelta(days=offset)
             habit_detail['days_in_a_row'] = days_in_a_row
             habit_detail['dates_completed'] = dates_completed
             habit_detail['should_display'] = should_display
