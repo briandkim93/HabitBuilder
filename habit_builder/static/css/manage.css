@@ -9,6 +9,8 @@
   height: 300px;
   margin-top: -150px;
   margin-left: -160px;
+
+  color: #ffffff;
 }
 
 .close-button {
@@ -108,10 +110,18 @@ table {
   text-align: center;
 }
 
-td {
+td, th {
   padding: 5px;
 
   border-bottom: 1px solid #777777;
+}
+
+th {
+  font-size: 1.5rem;
+
+  text-decoration: underline;
+
+  color: #f15025 !important;
 }
 
 .add-cell {
@@ -132,11 +142,13 @@ td {
 }
 
 .remove-button {
+  font-size: 1.1rem;
   font-weight: bold;
 
   width: 100%;
   height: 28px;
 
+  color: #ffffff;;
   border: 0;
   background-color: inherit;
 
@@ -151,5 +163,9 @@ td {
 @media (min-width: 576px) {
   td {
     font-size: 1.5rem;
+  }
+
+  th {
+    font-size: 2.0rem;
   }
 }
