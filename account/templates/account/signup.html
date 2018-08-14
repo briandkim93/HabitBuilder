@@ -7,6 +7,7 @@
 
 {% block content %}
 <div class="form signup-menu">
+  <img class="logo" src="{% static 'hb-logo.png' %}" alt="HabitBuilder logo" />
   <form method="POST" action="{% url 'signup' %}">
     {% csrf_token %}
     <p>
