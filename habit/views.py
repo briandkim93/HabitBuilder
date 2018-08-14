@@ -96,14 +96,14 @@ def day(request, date_slug):
 @login_required(login_url='/')
 def manage(request):
     habit_details = []
-    for habit_obj in Habit.objects.filter(user__username=request.user.username):
+    for index, habit_obj in enumerate(Habit.objects.filter(user__username=request.user.username)):
         days = []
-        for day in habit_obj.days.all():
-            days += [day.day]
+        for day_obj in habit_obj.days.all():
+            days += [day_obj.day.capitalize()]
         habit_detail = {}
         habit_detail['id'] = habit_obj.id
         habit_detail['habit'] = habit_obj.habit
-        habit_detail['days'] = days
+        habit_detail['days'] = ', '.join(days)
         habit_details += [habit_detail]
     context = {
         'habit': '',

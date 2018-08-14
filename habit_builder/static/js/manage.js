@@ -9,10 +9,12 @@ if (add_menu_el && close_button_el && days_list_el) {
 
     days_list_el.addEventListener('click', function(event) {
         day_item_el = event.target;
-        if (day_item_el.classList.contains('selected')) {
-            day_item_el.classList.remove('selected');
-        } else {
-            day_item_el.classList.add('selected');
+        if (day_item_el.nodeName == 'LABEL') {
+            if (day_item_el.classList.contains('selected')) {
+                day_item_el.classList.remove('selected');
+            } else {
+                day_item_el.classList.add('selected');
+            }
         }
     }, true);
 }

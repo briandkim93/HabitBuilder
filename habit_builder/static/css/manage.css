@@ -1,4 +1,5 @@
 .add-menu {
+  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -82,6 +83,48 @@
   font-size: 1.2rem;
 }
 
-@media (min-width: 576px) {
+table {
+  width: 95%;
+  margin: 10px auto;
+  border-collapse: collapse;
+  text-align: center;
+}
 
+th {
+  background-color: #444444;
+  color: #ffffff;
+}
+
+th, td {
+  padding: 5px;
+  border: 1px solid #000000;
+}
+
+.add-habit {
+  background-color: #21b721;
+  color: #000000
+}
+
+.data-cell {
+  color: #ffffff;
+  background-color: #2C2C2C;
+}
+
+.remove-cell {
+  padding: 0;
+  background-color: #F15025;
+}
+
+.remove-button {
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 28px;
+  background-color: inherit;
+  border: 0;
+  font-weight: bold;
+}
+
+.remove-button:hover, .add-habit:hover{
+  cursor: pointer;
 }
