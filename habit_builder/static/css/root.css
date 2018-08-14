@@ -1,5 +1,5 @@
 html, body {
-  background-color: #EFF2EF;
+  background-color: #fff1ea;
   margin: 0;
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   color: #191919;
@@ -8,6 +8,7 @@ html, body {
 .nav-bar {
   width: 100%;
   background-color: #ffffff;
+  border-bottom: 2px solid #F2DDD2;
 }
 
 .nav-header {

@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="login-menu">
+<div class="form login-menu">
   <img class="logo" src="{% static 'hb-logo.png' %}" alt="HabitBuilder logo" />
   <form method="POST" action="{% url 'login' %}">
     {% csrf_token %}
