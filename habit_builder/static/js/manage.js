@@ -1,9 +1,9 @@
 let addMenuEl = document.getElementsByClassName('add-menu')[0];
 let closeButtonEl = document.getElementsByClassName('close-button')[0];
 let daysListEl = document.getElementsByClassName('days-list')[0];
-let addHabitEl = document.getElementsByClassName('add-habit')[0];
+let addCellEl = document.getElementsByClassName('add-cell')[0];
 
-if (addMenuEl && closeButtonEl && daysListEl && addHabitEl) {
+if (addMenuEl && closeButtonEl && daysListEl && addCellEl) {
     closeButtonEl.addEventListener('click', function() {
         addMenuEl.classList.add('hidden');
     }, false);
@@ -18,8 +18,7 @@ if (addMenuEl && closeButtonEl && daysListEl && addHabitEl) {
             }
         }
     }, true);
-    addHabitEl.addEventListener('click', function() {
-        console.log('clicked');
+    addCellEl.addEventListener('click', function() {
         addMenuEl.classList.remove('hidden');
     }, false);
 }

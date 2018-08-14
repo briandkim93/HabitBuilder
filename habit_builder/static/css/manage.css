@@ -96,11 +96,11 @@ th {
 
 th, td {
   padding: 5px;
-  border: 1px solid #000000;
+  border: 1px solid #333333;
 }
 
-.add-habit {
-  background-color: #21b721;
+.add-cell {
+  background-color: #307a3a;
   color: #ffffff;
 }
 
@@ -124,6 +124,6 @@ th, td {
   font-weight: bold;
 }
 
-.remove-button:hover, .add-habit:hover{
+.remove-button:hover, .add-cell:hover{
   cursor: pointer;
 }
