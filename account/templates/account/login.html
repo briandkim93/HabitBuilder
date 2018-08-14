@@ -1,21 +1,33 @@
 {% extends 'root.html' %}
+{% load staticfiles %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}" />
+{% endblock %}
 
 {% block content %}
-<form method="POST" action="{% url 'login' %}">
-  {% csrf_token %}
-  <p>
-    {{error}}
-  </p>
-  <p>
-    <label for="username">Username:</label>
-    <input id="username" type="text" name="username" value="{{username}}" />
-  </p>
-  <p>
-    <label for="password">Password:</label>
-    <input id="password" type="password" name="password" />
-  </p>
-  <p>
-    <input type="submit" value="Login" />
-  </p>
-</form>
+<div class="login-menu">
+  <img class="logo" src="{% static 'hb-logo.png' %}" alt="HabitBuilder logo" />
+  <form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+    <p>
+      {{error}}
+    </p>
+    <p>
+      <label for="username">Username:</label>
+    </p>
+    <p>
+      <input id="username" type="text" name="username" value="{{username}}" />
+    </p>
+    <p>
+      <label for="password">Password:</label>
+    </p>
+    <p>
+      <input id="password" type="password" name="password" />
+    </p>
+    <p>
+      <input class="submit-button" type="submit" value="Login" />
+    </p>
+  </form>
+</div>
 {% endblock %}

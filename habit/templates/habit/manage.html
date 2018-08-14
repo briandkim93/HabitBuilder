@@ -1,4 +1,9 @@
 {% extends 'root.html' %}
+{% load staticfiles %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/manage.css' %}" />
+{% endblock %}
 
 {% block content %}
 <table>
@@ -69,15 +74,15 @@
   <form method="POST" action="{% url 'manage' %}">
     {% csrf_token %}
     <p>
-      <label for="habit">Habit Name:</label>
+      <label for="habit">Habit Title:</label>
     </p>
     <p>
-      <input id="habit" type="text" name="habit" value="{{habit}}" />
+      <input id="habit" type="text" name="habit" value="{{habit}}" placeholder="i.e. Study, Exercise" />
     </p>
     <p>
       Days:
     </p>
-    <div id="days-list">
+    <div class="days-list">
         <label class="day-item" for="mon">MON</label>
         <input id="mon" type="checkbox" name="days" value="mon" />
         <label class="day-item"  for="tue">TUE</label>

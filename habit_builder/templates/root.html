@@ -3,15 +3,16 @@
   <head>
     {% load staticfiles %}
     <title>HabitBuilder</title>
+    {% block link %}
+    {% endblock %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/root.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/manage.css' %}" />
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
   </head>
   <body>
     <nav class="nav-bar">
-      <div class="header">
-        <a href="{% url 'signup' %}"><img class="logo" src="{% static 'hb-logo.png' %}" /></a>
-        <span class="title">HabitBuilder</span>
+      <div class="nav-header">
+        <a href="{% url 'signup' %}"><img class="nav-logo" src="{% static 'hb-logo.png' %}" alt="HabitBuilder logo" /></a>
+        <span class="nav-title">HabitBuilder</span>
       </div>
       {% if user.is_authenticated %}
       <div class="nav-list">
@@ -29,8 +30,11 @@
         </div>
       </div>
       {% else %}
-      <div class="nav-list last-nav-item">
-        <div class="nav-item">
+      <div class="nav-list">
+        <div class="nav-item"">
+          <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+        </div>
+        <div class="nav-item last-nav-item"">
           <a class="nav-link" href="{% url 'login' %}">Login</a>
         </div>
       </div>
