@@ -13,12 +13,10 @@
   <h2 class="date">{{formatted_date}}</h2>
   <hr />
   <ul class="habits-list">
-    {% if displayed_habits_len == 0 %}
-    <li class="habit">
+    <li class="no-habits-container hidden">
       <p class="no-habits-message">No Habits for Today</p>
        <hr class="habit-rule" />
     </li>
-    {% endif %}
     {% for habit_detail in habit_details %}
     {% if day_str_abbr in habit_detail.days and habit_detail.should_display == True %}
     <li class="habit">
