@@ -22,6 +22,11 @@
     <li class="habit">
       {% if date_slug in habit_detail.dates_completed %}
       <p class="habit-title done">{{habit_detail.habit}}</p>
+      {% if habit_detail.days_in_a_row == 1 %}
+      <p class="completed-streak done">({{habit_detail.days_in_a_row}} Day in a Row)</p>
+      {% else %}
+      <p class="completed-streak done">({{habit_detail.days_in_a_row}} Days in a Row)</p>
+      {% endif %}
       <form method="POST" action="{% url 'day' date_slug %}">
         {% csrf_token %}
         <input type="hidden" name="habit_id" value="{{habit_detail.id}}" />
@@ -30,6 +35,11 @@
       </form>
       {% else %}
       <p class="habit-title">{{habit_detail.habit}}</p>
+      {% if habit_detail.days_in_a_row == 1 %}
+      <p class="completed-streak">({{habit_detail.days_in_a_row}} Day in a Row)</p>
+      {% else %}
+      <p class="completed-streak">({{habit_detail.days_in_a_row}} Days in a Row)</p>
+      {% endif %}
       <form method="POST" action="{% url 'day' date_slug %}">
         {% csrf_token %}
         <input type="hidden" name="habit_id" value="{{habit_detail.id}}" />

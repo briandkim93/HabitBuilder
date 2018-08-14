@@ -72,8 +72,17 @@ def day(request, date_slug):
             habit_detail['habit'] = habit_obj.habit
             habit_detail['days'] = days
             dates_completed = []
+            dates_completed_objs = []
             for date_completed_obj in habit_obj.dates_completed.all():
+                dates_completed_objs += [date_completed_obj.date_completed]
                 dates_completed += [date_completed_obj.date_completed.isoformat()]
+            days_in_a_row = 0
+            if date_obj in dates_completed_objs:
+                days_in_a_row = 1
+                while (date_obj - timedelta(days=1)) in dates_completed_objs:
+                    days_in_a_row += 1
+                    date_obj = date_obj - timedelta(days=1)
+            habit_detail['days_in_a_row'] = days_in_a_row
             habit_detail['dates_completed'] = dates_completed
             habit_detail['should_display'] = should_display
             habit_details += [habit_detail]

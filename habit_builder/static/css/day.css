@@ -48,6 +48,12 @@ hr {
   width: 70%;
   display: inline-block;
   font-size: 1.2rem;
+  margin-bottom: 2px;
+}
+
+.completed-streak {
+  margin: 0;
+  color: #F15025;
 }
 
 .no-habits-message {
