@@ -6,6 +6,42 @@ from .models import Day
 from .models import DateCompleted
 from .models import Habit
 
+def day_str_converter(date_obj):
+    day_int = date_obj.weekday()
+    if day_int == 0:
+        day_str = 'Monday'
+        day_str_abbr = 'mon'
+    elif day_int == 1:
+        day_str = 'Tuesday'
+        day_str_abbr = 'tue'
+    elif day_int == 2:
+        day_str = 'Wednesday'
+        day_str_abbr = 'wed'
+    elif day_int == 3:
+        day_str = 'Thursday'
+        day_str_abbr = 'thu'
+    elif day_int == 4:
+        day_str = 'Friday'
+        day_str_abbr = 'fri'
+    elif day_int == 5:
+        day_str = 'Saturday'
+        day_str_abbr = 'sat'
+    elif day_int == 6:
+        day_str = 'Sunday'
+        day_str_abbr = 'sun'
+    return (day_str, day_str_abbr)
+
+def completed_streak_count(date_obj, dates_completed_objs, days):
+    all_days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+    days_in_a_row = 0
+    while date_obj in dates_completed_objs:
+        day_str_abbr = day_str_converter(date_obj)[1]
+        prev_day = days[days.index(day_str_abbr) - 1]
+        offset = (all_days.index(day_str_abbr) - all_days.index(prev_day)) % 7
+        days_in_a_row += 1
+        date_obj = date_obj - timedelta(days=offset)
+    return days_in_a_row
+
 # Create your views here.
 @login_required(login_url='/')
 def day(request, date_slug):
@@ -35,30 +71,8 @@ def day(request, date_slug):
             habit_obj.save()
             return redirect('/habits/day/' + date_slug)
     else:
-        day_int = date_obj.weekday()
-        day_str = ''
-        all_days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
-        if day_int == 0:
-            day_str = 'Monday'
-            day_str_abbr = 'mon'
-        elif day_int == 1:
-            day_str = 'Tuesday'
-            day_str_abbr = 'tue'
-        elif day_int == 2:
-            day_str = 'Wednesday'
-            day_str_abbr = 'wed'
-        elif day_int == 3:
-            day_str = 'Thursday'
-            day_str_abbr = 'thu'
-        elif day_int == 4:
-            day_str = 'Friday'
-            day_str_abbr = 'fri'
-        elif day_int == 5:
-            day_str = 'Saturday'
-            day_str_abbr = 'sat'
-        elif day_int == 6:
-            day_str = 'Sunday'
-            day_str_abbr = 'sun'
+        day_str = day_str_converter(date_obj)[0]
+        day_str_abbr = day_str_converter(date_obj)[1]
         formatted_date = date_obj.strftime("%B %d, %Y")
         prev_date_slug = str(date_obj - timedelta(days=1))
         next_date_slug = str(date_obj + timedelta(days=1))
@@ -77,28 +91,7 @@ def day(request, date_slug):
             for date_completed_obj in habit_obj.dates_completed.all():
                 dates_completed_objs += [date_completed_obj.date_completed]
                 dates_completed += [date_completed_obj.date_completed.isoformat()]
-            days_in_a_row = 0
-            date_obj2 = date_obj
-            while date_obj2 in dates_completed_objs:
-                day_int2 = date_obj2.weekday()
-                if day_int2 == 0:
-                    day_str_abbr2 = 'mon'
-                elif day_int2 == 1:
-                    day_str_abbr2 = 'tue'
-                elif day_int2 == 2:
-                    day_str_abbr2 = 'wed'
-                elif day_int2 == 3:
-                    day_str_abbr2 = 'thu'
-                elif day_int2 == 4:
-                    day_str_abbr2 = 'fri'
-                elif day_int2 == 5:
-                    day_str_abbr2 = 'sat'
-                elif day_int2 == 6:
-                    day_str_abbr2 = 'sun'
-                prev_day = days[days.index(day_str_abbr2) - 1]
-                offset = (all_days.index(day_str_abbr2) - all_days.index(prev_day)) % 7
-                days_in_a_row += 1
-                date_obj2 = date_obj2 - timedelta(days=offset)
+            days_in_a_row = completed_streak_count(date_obj, dates_completed_objs, days)
             habit_detail['days_in_a_row'] = days_in_a_row
             habit_detail['dates_completed'] = dates_completed
             habit_detail['should_display'] = should_display
