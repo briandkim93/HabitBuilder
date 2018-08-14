@@ -1,67 +1,83 @@
 html, body {
-  background-color: #fff1ea;
-  margin: 0;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-  color: #191919;
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+
   height: 100%;
+  margin: 0;
+
+  color: #191919;
+  background-color: #fff1ea;
 }
 
 .page {
-  width: 100%;
   display: flex;
-  justify-content: center;
+
+  width: 100%;
   min-height: 330px;
+
+  justify-content: center;
 }
 
 .nav-bar {
   position: relative;
+
   width: 100%;
+
+  border-bottom: 2px solid #f2ddd2;
   background-color: #ffffff;
-  border-bottom: 2px solid #F2DDD2;
 }
 
 .nav-header {
   display: flex;
-  align-items: center;
+
   width: 100%;
+
+  align-items: center;
   justify-content: center;
 }
 
 .nav-logo {
   width: 40px;
-  padding: 0px 5px;
+  padding: 0 5px;
 }
 
 .nav-title {
   font-size: 2.3rem;
+
   padding: 10px 5px 5px;
+
   text-shadow: 1px 1px #888988;
 }
 
 .nav-list {
-  text-align: center;
   padding: 15px 0;
+
+  text-align: center;
 }
 
 .nav-item {
   display: inline-block;
+
   padding: 0 20px;
 }
 
 .nav-link {
-  border: 0;
-  color: inherit;
   font-family: inherit;
-  text-decoration: none;
   font-size: 1rem;
   font-weight: bold;
+
   padding: 0;
+
+  text-decoration: none;
+
+  color: inherit;
+  border: 0;
   background: 0;
 }
 
 .nav-link:hover {
-  color: #F15025;
   cursor: pointer;
+
+  color: #f15025;
 }
 
 @media (min-width: 576px) {
@@ -70,7 +86,9 @@ html, body {
   }
   .nav-bar {
     position: relative;
+
     display: flex;
+
     align-items: center;
   }
   .nav-header {

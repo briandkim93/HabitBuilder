@@ -1,18 +1,21 @@
 .signup-header {
-  text-align: center;
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+
   margin: 0;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+
+  text-align: center;
 }
 
 hr {
-  border-color: #F15025;
+  border-color: #f15025;
 }
 
 .signup-menu {
-  margin-top: 50px;
+  font-size: 1.0rem;
+
   width: 280px;
   height: 360px;
-  font-size: 1.0rem;
+  margin-top: 50px;
 }
 
 .signup-menu p {
@@ -21,37 +24,43 @@ hr {
 
 .logo {
   display: block;
+
   margin: auto;
 }
 
-.signup-menu input[type="text"], .signup-menu input[type="password"], .signup-menu input[type="email"] {
+.signup-menu input[type='text'], .signup-menu input[type='password'], .signup-menu input[type='email'] {
   width: 230px;
   height: 25px;
 }
 
 .submit-button {
+  font-size: 1.2rem;
+
   width: 80px;
   height: 30px;
-  font-size: 1.2rem;
 }
 
 .error-message {
-  text-align: center;
-  color: #CE0101;
-  width: 60%;
   font-size: 0.8rem;
+
+  width: 60%;
+
+  text-align: center;
+
+  color: #ce0101;
 }
 
 @media (min-width: 576px) {
   .signup-menu {
+    font-size: 1.2rem;
+
     width: 350px;
     height: 470px;
-    font-size: 1.2rem;
   }
   .signup-menu p {
     margin: 15px 0;
   }
-  .signup-menu input[type="text"], .signup-menu input[type="password"], .signup-menu input[type="email"] {
+  .signup-menu input[type='text'], .signup-menu input[type='password'], .signup-menu input[type='email'] {
     width: 300px;
   }
 }

@@ -1,53 +1,63 @@
 .login-header {
-  text-align: center;
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+
   margin: 0;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+
+  text-align: center;
 }
 
 hr {
-  border-color: #F15025;
+  border-color: #f15025;
 }
 
 .login-menu {
-  margin-top: 50px;
+  font-size: 1.0rem;
+
   width: 280px;
   height: 300px;
-  font-size: 1.0rem;
+  margin-top: 50px;
 }
 
 .logo {
   display: block;
+
   margin: auto;
   margin-top: 10px;
 }
 
-.login-menu input[type="text"], .login-menu input[type="password"] {
+.login-menu input[type='text'], .login-menu input[type='password'] {
   width: 230px;
   height: 30px;
 }
 
 .submit-button {
+  font-size: 1.2rem;
+
   width: 100px;
   height: 30px;
-  font-size: 1.2rem;
-  background-color: #F15025;
+
   color: #ffffff;
+  background-color: #f15025;
 }
 
 .error-message {
-  text-align: center;
-  color: #CE0101;
-  width: 55%;
   font-size: 0.8rem;
+
+  width: 55%;
+
+  text-align: center;
+
+  color: #ce0101;
 }
 
 @media (min-width: 576px) {
   .login-menu {
+    font-size: 1.2rem;
+
     width: 350px;
     height: 320px;
-    font-size: 1.2rem;
   }
-  .login-menu input[type="text"], .login-menu input[type="password"] {
+  .login-menu input[type='text'], .login-menu input[type='password'] {
     width: 300px;
   }
 }
