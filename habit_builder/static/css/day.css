@@ -85,6 +85,10 @@ hr {
   width: 100%
 }
 
+.hidden {
+  display: none;
+}
+
 @media (min-width: 576px) {
   h1 {
     font-size: 3.0rem;
