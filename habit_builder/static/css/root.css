@@ -6,7 +6,15 @@ html, body {
   height: 100%;
 }
 
+.page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  min-height: 330px;
+}
+
 .nav-bar {
+  position: relative;
   width: 100%;
   background-color: #ffffff;
   border-bottom: 2px solid #F2DDD2;
@@ -57,12 +65,14 @@ html, body {
 }
 
 @media (min-width: 576px) {
+  .page {
+    min-height: 420px;
+  }
   .nav-bar {
     position: relative;
     display: flex;
     align-items: center;
   }
-
   .nav-header {
     justify-content: left;
   }

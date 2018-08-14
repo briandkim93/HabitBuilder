@@ -9,8 +9,7 @@ hr {
 }
 
 .login-menu {
-  margin-top: -150px;
-  margin-left: -125px;
+  margin-top: 50px;
   width: 250px;
   height: 300px;
   font-size: 1.0rem;
@@ -44,9 +43,7 @@ hr {
 
 @media (min-width: 576px) {
   .login-menu {
-    margin-left: -175px;
     width: 350px;
-    margin-top: -160px;
     height: 320px;
     font-size: 1.2rem;
   }

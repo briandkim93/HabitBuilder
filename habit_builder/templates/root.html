@@ -41,8 +41,10 @@
       </div>
       {% endif %}
     </nav>
-    {% block content %}
-    {% endblock %}
+    <div class="page">
+      {% block content %}
+      {% endblock %}
+    </div>
     <script type="text/javascript" src="{% static 'js/manage.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/day.js' %}"></script>
   </body>
