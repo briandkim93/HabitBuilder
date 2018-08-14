@@ -12,9 +12,6 @@
   <form method="POST" action="{% url 'login' %}">
     {% csrf_token %}
     <p>
-      {{error}}
-    </p>
-    <p>
       <label for="username">Username:</label>
     </p>
     <p>
@@ -28,6 +25,9 @@
     </p>
     <p>
       <input class="submit-button" type="submit" value="Login" />
+    </p>
+    <p class="error-message">
+      {{error}}
     </p>
   </form>
 </div>

@@ -36,6 +36,13 @@ hr {
   font-size: 1.2rem;
 }
 
+.error-message {
+  text-align: center;
+  color: #CE0101;
+  width: 55%;
+  font-size: 0.8rem;
+}
+
 @media (min-width: 576px) {
   .signup-menu {
     margin-top: -230px;

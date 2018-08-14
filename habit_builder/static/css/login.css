@@ -35,6 +35,13 @@ hr {
   color: #ffffff;
 }
 
+.error-message {
+  text-align: center;
+  color: #CE0101;
+  width: 55%;
+  font-size: 0.8rem;
+}
+
 @media (min-width: 576px) {
   .login-menu {
     margin-left: -175px;

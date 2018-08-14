@@ -45,7 +45,7 @@ def signup(request):
             auth.login(request, user)
             return redirect('/habits/day/' + (datetime.now() - timedelta(hours=7)).date().isoformat())
         else:
-            context['error'] = 'Please do not leave any empty fields'
+            context['error'] = 'Please fill in all fields'
             return render(request, 'account/signup.html', context)
     else:
         if request.user.is_authenticated:
