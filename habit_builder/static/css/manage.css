@@ -1,7 +1,7 @@
 .add-menu {
   font-size: 1.2rem;
 
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
 
@@ -11,6 +11,17 @@
   margin-left: -160px;
 
   color: #ffffff;
+  border: 1px solid #000000;
+  background-color: #f4f4f4;
+}
+
+.add-menu input[type='text'] {
+  width: 280px;
+  height: 30px;
+}
+
+.add-menu input[type='checkbox'] {
+  display: none;
 }
 
 .close-button {
@@ -33,15 +44,6 @@
 }
 
 .hidden {
-  display: none;
-}
-
-.add-menu input[type='text'] {
-  width: 280px;
-  height: 30px;
-}
-
-.add-menu input[type='checkbox'] {
   display: none;
 }
 
@@ -102,8 +104,8 @@
 }
 
 table {
-  width: 95%;
-  margin: 10px auto;
+  width: 80%;
+  margin: 45px auto;
 
   border-collapse: collapse;
 
@@ -117,11 +119,9 @@ td, th {
 }
 
 th {
-  font-size: 1.5rem;
+  font-size: 2.0rem !important;
 
-  text-decoration: underline;
-
-  color: #f15025 !important;
+  padding: 10px 0;
 }
 
 .add-cell {
@@ -131,7 +131,7 @@ th {
 }
 
 .add-cell:hover {
-  background-color: #51935A;
+  background-color: #51935a;
 }
 
 .data-cell {
@@ -139,8 +139,30 @@ th {
   background-color: #2c2c2c;
 }
 
+.add-habit-submit-button {
+  border: 1px solid #2c2c2c !important;
+}
+
+#habit-input {
+  border: 1px solid #000000;
+}
+
+.empty-habit-cell {
+  padding: 30px 5px;
+
+  font-size: 2.5rem;
+}
+
 .habit-cell {
-  border-right: 1px solid #777777;
+  border: 1px solid #777777;
+}
+
+.habit-days {
+  color: #2c2c2c;
+}
+
+.habit-title {
+  color: #2c2c2c;
 }
 
 .remove-cell {
@@ -160,12 +182,12 @@ th {
   width: 100%;
   height: 28px;
 
-  color: #ffffff;;
+  color: #ffffff;
   border: 0;
   background-color: inherit;
 
   align-items: center;
-  justify-content: center;
+  justify-content: center;;
 }
 
 .remove-button:hover, .add-cell:hover {
@@ -178,6 +200,6 @@ th {
   }
 
   th {
-    font-size: 2.0rem;
+    font-size: 3.0rem !important;
   }
 }

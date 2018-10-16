@@ -1,8 +1,7 @@
 import os
+from decouple import config
 
-from habit_builder.confidential import SECRET_KEY
-from habit_builder.confidential import USER
-from habit_builder.confidential import PASSWORD
+SECRET_KEY = config('SECRET_KEY')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -54,9 +53,9 @@ WSGI_APPLICATION = 'habit_builder.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'habitbuilderdb',
-        'USER': USER,
-        'PASSWORD': PASSWORD,
+        'NAME': config('MYSQL_NAME'),
+        'USER': config('MYSQL_USER'),
+        'PASSWORD': config('MYSQL_PASSWORD'),
         'HOST': 'localhost',
         'PORT': ''
     }

@@ -33,7 +33,7 @@ hr {
 .submit-button {
   font-size: 1.2rem;
 
-  width: 100px;
+  width: 90px;
   height: 30px;
 
   color: #ffffff;
@@ -57,6 +57,7 @@ hr {
     width: 350px;
     height: 320px;
   }
+  
   .login-menu input[type='text'], .login-menu input[type='password'] {
     width: 300px;
   }

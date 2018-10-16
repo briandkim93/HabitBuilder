@@ -26,6 +26,11 @@
         </td>
       </tr>
       {% endfor %}
+      {% if habit_details|length == 0 %}
+      <tr>
+        <td class="data-cell habit-cell empty-habit-cell">No Habits Added</td>
+      </tr>       
+      {% endif %}
       <tr>
         <td class="add-cell" colspan="3">Add</td>
       </tr>
@@ -37,13 +42,13 @@
   </div>
   <form method="POST" action="{% url 'manage' %}">
     {% csrf_token %}
-    <p>
-      <label for="habit">Habit Title:</label>
+    <p class="habit-title">
+      <label for="habit-input">Habit Title:</label>
     </p>
     <p>
-      <input id="habit" type="text" name="habit" value="{{habit}}" placeholder="i.e. Study, Exercise" />
+      <input id="habit-input" type="text" name="habit" value="{{habit}}" placeholder="i.e. Study, Exercise" />
     </p>
-    <p>
+    <p class="habit-days">
       Days:
     </p>
     <div class="days-list">
@@ -63,7 +68,7 @@
         <input id="sun" type="checkbox" name="days" value="sun" />
     </div>
     <p>
-      <input class="submit-button" type="submit" name="submit" value="Add" />
+      <input class="submit-button add-habit-submit-button" type="submit" name="submit" value="Add" />
     </p>
   </form>
   <p class="error-message">
