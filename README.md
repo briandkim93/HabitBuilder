@@ -20,18 +20,19 @@ pip3 install Django
 pip3 install mysqlclient
 ```
 
-**Create a new file named confidential.py in the habit_builder directory.**
+**Create a new file named .env in the root HabitBuilder directory.**
 **Add the following lines to confidential.py**
 ```
 SECRET_KEY = {YOUR DJANGO SECRET_KEY HERE}
-USER = {YOUR MYSQL USERNAME, i.e. root}
-PASSWORD = {YOUR MYSQL PASSWORD}
+MYSQL_NAME = {YOUR MYSQL DATABASE NAME, i.e. habitbuilderdb}
+MYSQL_USER = {YOUR MYSQL USERNAME, i.e. root}
+MYSQL_PASSWORD = {YOUR MYSQL PASSWORD}
 ADMIN_URL = {PREFERRED URL FOR DJANGO ADMIN PAGE, i.e. 'admin/'}
 ```
 
-**Create a new MySQL database named habitbuilderdb:**
+**Create a new MySQL database:**
 ```
-CREATE DATABASE habitbuilderdb;
+CREATE DATABASE {YOUR MYSQL DATABASE NAME, i.e. habitbuilderdb};
 ```
 
 **Back in the HabitBuilder directory execute the following configuration commands:**

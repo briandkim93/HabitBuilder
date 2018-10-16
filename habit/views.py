@@ -45,7 +45,7 @@ def completed_streak_count(date_obj, dates_completed_objs, days):
 # Create your views here.
 @login_required(login_url='/')
 def day(request, date_slug):
-    date_obj = date.fromisoformat(date_slug)
+    date_obj = datetime.strptime(date_slug, '%Y-%m-%d').date()
     if request.method == 'POST':
         habit_id = request.POST['habit_id']
         if request.POST['submit'] == 'Done':
@@ -65,7 +65,7 @@ def day(request, date_slug):
         else:
             habit_obj = Habit.objects.get(id=habit_id)
             date_slug = request.POST['date_completed']
-            date_obj = date.fromisoformat(date_slug)
+            date_obj = datetime.strptime(date_slug, '%Y-%m-%d').date()
             date_completed_obj = DateCompleted.objects.get(date_completed=date_obj)
             habit_obj.dates_completed.remove(date_completed_obj)
             habit_obj.save()
